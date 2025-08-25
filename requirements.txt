@@ -1,0 +1,18 @@
+# FastAPI Auth0 Token Verifier Dependencies
+
+# Core dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Auth0 SDK - DPoP feature branch
+git+https://github.com/auth0/auth0-server-python.git@feature/auth0-api-python/dpop-support#subdirectory=packages/auth0_api_python
+
+# HTTP client - compatible with auth0-api-python 
+httpx>=0.28.1,<0.29.0
+
+# Form data support
+python-multipart==0.0.6
+
+# Development and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
