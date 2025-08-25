@@ -54,8 +54,8 @@ class ProtectedResource(BaseModel):
 AUTH0_DOMAIN = os.getenv("AUTH0_DOMAIN", "dev-cz7vb2ggqqahhzfw.us.auth0.com")  
 AUTH0_AUDIENCE = os.getenv("AUTH0_AUDIENCE", "https://fastapi-auth0-verifier")
 
-# Available scopes - users can select these via Swagger UI checkboxes
-AVAILABLE_SCOPES = {
+# Available scopes for SPA - users can select these via Swagger UI checkboxes
+SPA_SCOPES = {
     "openid": "OpenID Connect",
     "profile": "User profile information",
     "email": "User email address",
@@ -65,6 +65,12 @@ AVAILABLE_SCOPES = {
     # "write:posts": "Write posts",
     # "admin": "Admin access",
     # "delete:users": "Delete users"
+}
+
+# Client Credentials scopes - these are configured in Auth0 dashboard, not user-selectable
+CLIENT_CREDENTIALS_SCOPES = {
+    "read:users": "Read user data",
+    "write:users": "Write user data"
 }
 
 # Initialize Auth0 API Client
@@ -120,7 +126,7 @@ security = Auth0HTTPBearer()
 auth0_oauth2 = Auth0ClientCredentials(
     token_url=f"https://{AUTH0_DOMAIN}/oauth/token",
     audience=AUTH0_AUDIENCE,
-    scopes=AVAILABLE_SCOPES,
+    scopes=CLIENT_CREDENTIALS_SCOPES,
     scheme_name="Auth0Bearer",
 )
 
@@ -137,7 +143,7 @@ class Auth0SPA(OAuth2):
             authorizationCode={
                 "authorizationUrl": authorization_url,
                 "tokenUrl": f"https://{AUTH0_DOMAIN}/oauth/token",
-                "scopes": AVAILABLE_SCOPES
+                "scopes": SPA_SCOPES
             }
         )
         super().__init__(flows=flows, scheme_name="Auth0SPA")
@@ -351,11 +357,11 @@ def create_app() -> FastAPI:
         openapi_schema["components"]["securitySchemes"] = {
             "Auth0Bearer": {
                 "type": "oauth2",
-                "description": "Auth0 OAuth2 with Bearer tokens (Client Credentials Flow)",
+                "description": "Auth0 OAuth2 with Bearer tokens (Client Credentials Flow) - Scopes pre-configured in Auth0 dashboard",
                 "flows": {
                     "clientCredentials": {
                         "tokenUrl": "/oauth/token",
-                        "scopes": AVAILABLE_SCOPES,
+                        "scopes": CLIENT_CREDENTIALS_SCOPES,
                     }
                 },
             },
@@ -366,7 +372,7 @@ def create_app() -> FastAPI:
                     "authorizationCode": {
                         "authorizationUrl": f"https://{AUTH0_DOMAIN}/authorize?audience={urllib.parse.quote(AUTH0_AUDIENCE)}",
                         "tokenUrl": f"https://{AUTH0_DOMAIN}/oauth/token",
-                        "scopes": AVAILABLE_SCOPES,
+                        "scopes": SPA_SCOPES,
                     }
                 },
             },
