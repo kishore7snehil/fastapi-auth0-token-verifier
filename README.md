@@ -69,18 +69,18 @@ python auth.py
 | **Auth0Bearer** | OAuth2 Client Credentials Flow | Server-to-server, machine-to-machine |
 | **Auth0SPA** | OAuth2 Authorization Code + PKCE | Single Page Applications, mobile apps |
 | **BearerAuth** | Standard JWT Bearer tokens | Direct token usage |
-| **DPoP** | Proof-of-possession with ES256 signature | High-security environments |
+| **DPoP** | Proof-of-possession with ES256 signature | High-security environments (WIP) |
 
 ### API Endpoints
 
 | Endpoint | Auth | Scope | Description |
 |----------|------|-------|-------------|
-| `GET /` | ❌ | - | API information and status |
-| `GET /public` | ❌ | - | Public data access |
+| `GET /` | ✅ | - | API information and status |
+| `GET /public` | ✅ | - | Public data access |
 | `GET /protected` | ✅ | - | Basic protected resource with user profile |
 | `GET /protected-with-scope` | ✅ | `read:users` | Scoped authorization demo |
 | `GET /protected/dpop` | ❌ | - | DPoP authentication demo (WIP) |
-| `GET /health` | ❌ | - | Service health check |
+| `GET /health` | ✅ | - | Service health check |
 
 ### Available Scopes (Configurable via Swagger UI)
 
