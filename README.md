@@ -79,7 +79,7 @@ python auth.py
 | `GET /public` | ❌ | - | Public data access |
 | `GET /protected` | ✅ | - | Basic protected resource with user profile |
 | `GET /protected-with-scope` | ✅ | `read:users` | Scoped authorization demo |
-| `GET /protected/dpop` | ✅ DPoP | - | DPoP authentication demo |
+| `GET /protected/dpop` | ❌ | - | DPoP authentication demo (WIP) |
 | `GET /health` | ❌ | - | Service health check |
 
 ### Available Scopes (Configurable via Swagger UI)
