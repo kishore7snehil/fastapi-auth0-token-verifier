@@ -15,7 +15,7 @@ This project demonstrates how to build secure APIs with comprehensive token veri
 - **JWT Token Verification** - Validate Auth0-issued access tokens
 - **SPA Support** - Authorization Code + PKCE flow for Single Page Applications
 - **Regular Web App Support** - Client Credentials flow for server-to-server
-- **DPoP Authentication** - Enhanced security with proof-of-possession 
+- **DPoP Authentication** - Enhanced security with proof-of-possession (WIP)
 - **Configurable Scopes** - Dynamic scope selection through Swagger UI
 - **User Profile Integration** - Automatic user data fetching from Auth0 /userinfo
 
@@ -25,7 +25,7 @@ This project demonstrates how to build secure APIs with comprehensive token veri
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/fastapi-auth0-token-verifier.git
+git clone https://github.com/kishore7snehil/fastapi-auth0-token-verifier.git
 cd fastapi-auth0-token-verifier
 
 # Create virtual environment
