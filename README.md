@@ -5,7 +5,7 @@ A comprehensive demonstration of JWT and DPoP token verification using Auth0 wit
 ![Auth0](https://img.shields.io/badge/Auth0-Token%20Verification-orange)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
 ![JWT](https://img.shields.io/badge/JWT-Verification-blue)
-![DPoP](https://img.shields.io/badge/DPoP-Support-purple)
+![DPoP (WIP)](https://img.shields.io/badge/DPoP-Support-purple)
 ![SPA](https://img.shields.io/badge/SPA-PKCE%20Support-red)
 
 ## 🎯 What This Demo Shows
